@@ -14,4 +14,4 @@
 3. Basic Authentication via build in generator
 4. Basic Authorization
 5. ActionCable for realtime updates
-6. More to come...
+6. Ability to like Tweets with realtime updates
