@@ -8,7 +8,11 @@ class TweetsController < ApplicationController
     @tweet = Tweet.create(tweet_params)
 
     if @tweet.save
-      redirect_to root_path, notice: "Tweet created!"
+      respond_to do |format|
+        format.turbo_stream
+        format.html { redirect_to tweets_path, notice: "Tweet created!" }
+      end
+
     else
       @tweets = Tweet.ordered_by_most_recent
       render :index, status: :unprocessable_entity, alert: "Tweet could not be created!"
