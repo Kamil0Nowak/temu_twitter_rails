@@ -25,6 +25,18 @@ class TweetsController < ApplicationController
     end
   end
 
+  def destroy
+    @tweet = Current.user.tweets.find(params[:id])
+    @tweet.destroy
+
+    respond_to do |format|
+      format.turbo_stream
+      format.html { redirect_to tweets_path, notice: "Tweet deleted!" }
+    end
+  rescue ActiveRecord::RecordNotFound
+    redirect_to tweets_path, alert: "Tweet could not be deleted!"
+  end
+
   private
 
   def tweet_params

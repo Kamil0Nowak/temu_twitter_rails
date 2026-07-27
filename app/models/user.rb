@@ -4,4 +4,8 @@ class User < ApplicationRecord
   has_many :tweets, dependent: :destroy
 
   normalizes :email_address, with: ->(e) { e.strip.downcase }
+
+  def is_tweet_owner?(tweet)
+    id == tweet.user_id
+  end
 end

@@ -3,6 +3,6 @@ Rails.application.routes.draw do
   resource :session
   resources :passwords, param: :token
 
-  resources :tweets, only: [ :index, :create ]
+  resources :tweets, only: [ :index, :create, :destroy ]
   root "tweets#index"
 end
