@@ -1,24 +1,13 @@
-# README
+# Simple Twitter like app
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Goals
 
-Things you may want to cover:
+1. Learn TurboStreams
+2. Learn TurboFrames
+3. Learn Stimulus
+4. Enhance knowlage of Rails
 
-* Ruby version
+## Features
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+1. Display & create tweets
+2. More soon.
