@@ -1,7 +1,7 @@
 <%= form_with(model: model, id: "new_tweet", class: "space-y-4") do |f| %>
   <%= render "shared/form_errors", object: model %>
 
-  <%= f.text_area :body, rows: 3, class: "w-full p-2 border border-gray-200 rounded resize-none", placeholder: "What's happening?"%>
+  <%= f.text_area :body, rows: 3, class: "w-full p-2 border border-gray-200 rounded resize-none focus:ring-2 focus:ring-blue-500 focus:outline-none", placeholder: "What's happening?"%>
 
   <div class="flex justify-end">
     <%= f.submit "Tweet", class: "bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 cursor-pointer" %>

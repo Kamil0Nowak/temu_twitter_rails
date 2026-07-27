@@ -1,0 +1,17 @@
+<div class="min-h-[80vh] flex flex-col justify-center items-center text-center px-4">
+
+  <svg aria-label="X" role="img" fill="none" viewBox="0 0 480 490" xmlns="http://www.w3.org/2000/svg" class="h-auto max-h-[300px] w-full max-w-[480px]"><defs><radialGradient cx="222.9386265277367" cy="393.3367711002533" gradientUnits="userSpaceOnUse" id="_R_hb4j6_" r="200"><stop stop-color="#333333" class="dark:[stop-color:#ffffff]"></stop><stop offset="1" stop-color="#AAAAAA" stop-opacity="0" class="dark:[stop-color:#5F5F5F]"></stop></radialGradient></defs><path d="M285.38 207.711L462.954 1.5H420.874L266.687 180.55L143.538 1.5H1.50003L187.726 272.256L1.50003 488.5H43.5818L206.408 299.417L336.462 488.5H478.5L285.37 207.711H285.38ZM227.743 274.641L208.875 247.68L58.7444 33.147H123.379L244.536 206.282L263.405 233.243L420.894 458.292H356.259L227.743 274.652V274.641Z" fill="#222222" class="dark:fill-black"></path><path d="M285.38 207.711L462.954 1.5H420.874L266.687 180.55L143.538 1.5H1.50003L187.726 272.256L1.50003 488.5H43.5818L206.408 299.417L336.462 488.5H478.5L285.37 207.711H285.38ZM227.743 274.641L208.875 247.68L58.7444 33.147H123.379L244.536 206.282L263.405 233.243L420.894 458.292H356.259L227.743 274.652V274.641Z" stroke="#fff" stroke-linejoin="round" stroke-width="3" class="dark:stroke-[#222222]"></path><path d="M285.38 207.711L462.954 1.5H420.874L266.687 180.55L143.538 1.5H1.50003L187.726 272.256L1.50003 488.5H43.5818L206.408 299.417L336.462 488.5H478.5L285.37 207.711H285.38ZM227.743 274.641L208.875 247.68L58.7444 33.147H123.379L244.536 206.282L263.405 233.243L420.894 458.292H356.259L227.743 274.652V274.641Z" stroke="url(#_R_hb4j6_)" stroke-linejoin="round" stroke-width="3" class="hidden dark:block"></path></svg>
+
+  <h1 class="text-4xl sm:text-6xl font-extrabold mb-4">
+    Happening now.
+  </h1>
+
+  <p class="text-xl text-gray-500 mb-8">
+    Join today!
+  </p>
+
+  <div class="flex flex-col sm:flex-row gap-4 w-full max-w-xs">
+    <%= link_to "Sign In", new_session_path, class: "w-full text-center bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-full transition shadow-lg" %>
+    <%= link_to "Sign Up", new_user_path, class: "w-full text-center bg-gray-900 hover:bg-black text-white font-bold py-3 px-6 rounded-full transition shadow-lg" %>
+  </div>
+</div>

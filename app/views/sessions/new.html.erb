@@ -1,0 +1,31 @@
+<div class="max-w-md mx-auto mt-10 p-6 bg-white rounded-lg shadow-md">
+  <h1 class="text-2xl font-bold mb-6 text-center">Zaloguj się</h1>
+
+  <% if (alert = flash[:alert]) %>
+    <p class="text-red-500 text-sm mb-4" id="alert"><%= alert %></p>
+  <% end %>
+
+  <% if (notice = flash[:notice]) %>
+    <p class="text-green-500 text-sm mb-4" id="notice"><%= notice %></p>
+  <% end %>
+
+  <%= form_with(url: session_url, class: "space-y-4") do |form| %>
+    <div>
+      <%= form.label :email_address, "E-mail", class: "block text-sm font-medium text-gray-700 mb-1" %>
+      <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "twoj@email.com", value: params[:email_address], class: "w-full p-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none" %>
+    </div>
+
+    <div>
+      <%= form.label :password, "Hasło", class: "block text-sm font-medium text-gray-700 mb-1" %>
+      <%= form.password_field :password, required: true, autocomplete: "current-password", placeholder: "••••••••", maxlength: 72, class: "w-full p-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none" %>
+    </div>
+
+    <div>
+      <%= form.submit "Zaloguj się", class: "w-full bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded cursor-pointer transition" %>
+    </div>
+  <% end %>
+
+  <div class="mt-4 text-center">
+    <%= link_to "Zapomniałeś hasła?", new_password_path, class: "text-sm text-blue-500 hover:underline" %>
+  </div>
+</div>

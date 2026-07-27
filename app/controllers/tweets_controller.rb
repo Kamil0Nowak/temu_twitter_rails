@@ -1,11 +1,17 @@
 class TweetsController < ApplicationController
+  allow_unauthenticated_access only: [ :index ]
   def index
-    @tweets = Tweet.ordered_by_most_recent
-    @tweet = Tweet.new
+    if authenticated?
+      @tweets = Tweet.ordered_by_most_recent
+      @tweet = Tweet.new
+      render :index
+    else
+      render :landing
+    end
   end
 
   def create
-    @tweet = Tweet.create(tweet_params)
+    @tweet = Current.user.tweets.build(tweet_params)
 
     if @tweet.save
       respond_to do |format|
