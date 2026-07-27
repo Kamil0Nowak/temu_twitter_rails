@@ -1,7 +1,7 @@
 <div id="<%= dom_id(tweet) %>" class="p-4 rounded-xl shadow-lg border border-gray-100 bg-white">
   <div class="flex justify-between">
     <span class="text-xs text-gray-500">by <%= display_author(tweet) %></span>
-    <%= link_to "𝕩", tweet_path(tweet), data: { turbo_method: :delete } if Current.user.is_tweet_owner?(tweet) %>
+    <%= link_to "𝕩", tweet_path(tweet), data: { turbo_method: :delete } if Current.user&.is_tweet_owner?(tweet) %>
   </div>
   <p class="text-gray-800 whitespace-pre-wrap my-2"><%= tweet.body %></p>
 
