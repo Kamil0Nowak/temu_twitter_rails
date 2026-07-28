@@ -24,6 +24,9 @@
   </head>
 
   <body class="bg-gray-100">
+    <div id="flash">
+      <%= render "shared/alerts" %>
+    </div>
     <%= render "layouts/navbar" %>
     <%= yield %>
   </body>

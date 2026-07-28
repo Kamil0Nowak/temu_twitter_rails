@@ -14,9 +14,11 @@ class TweetsController < ApplicationController
     @tweet = Current.user.tweets.build(tweet_params)
 
     if @tweet.save
+      flash.now[:notice] = "Tweet created!"
       render turbo_stream: [
                 turbo_stream.prepend("tweets", partial: "tweets/tweet", locals: { tweet: @tweet }),
-                turbo_stream.replace("new_tweet", partial: "tweets/form", locals: { model: Tweet.new })
+                turbo_stream.replace("new_tweet", partial: "tweets/form", locals: { model: Tweet.new }),
+                turbo_stream.replace("flash", partial: "shared/alerts")
       ]
     else
       @tweets = Tweet.ordered_by_most_recent
