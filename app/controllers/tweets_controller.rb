@@ -14,11 +14,10 @@ class TweetsController < ApplicationController
     @tweet = Current.user.tweets.build(tweet_params)
 
     if @tweet.save
-      respond_to do |format|
-        format.turbo_stream
-        format.html { redirect_to tweets_path, notice: "Tweet created!" }
-      end
-
+      render turbo_stream: [
+                turbo_stream.prepend("tweets", partial: "tweets/tweet", locals: { tweet: @tweet }),
+                turbo_stream.replace("new_tweet", partial: "tweets/form", locals: { model: Tweet.new })
+      ]
     else
       @tweets = Tweet.ordered_by_most_recent
       render :index, status: :unprocessable_entity, alert: "Tweet could not be created!"
@@ -29,10 +28,10 @@ class TweetsController < ApplicationController
     @tweet = Current.user.tweets.find(params[:id])
     @tweet.destroy
 
-    respond_to do |format|
-      format.turbo_stream
-      format.html { redirect_to tweets_path, notice: "Tweet deleted!" }
-    end
+    render turbo_stream: [
+      turbo_stream.remove(@tweet)
+    ]
+
   rescue ActiveRecord::RecordNotFound
     redirect_to tweets_path, alert: "Tweet could not be deleted!"
   end
