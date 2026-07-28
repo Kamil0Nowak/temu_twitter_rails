@@ -15,4 +15,7 @@
       <%= render "likes/counter", tweet: tweet %>
     </div>
   </div>
+  <%= turbo_frame_tag "comments" do %>
+  <%= link_to "💬 Show comments", tweet_comments_path(tweet), class: "text-blue-500 hover:underline" %>
+  <% end %>
 </div>
