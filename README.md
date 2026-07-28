@@ -15,3 +15,4 @@
 4. Basic Authorization
 5. ActionCable for realtime updates
 6. Ability to like Tweets with realtime updates
+7. More to come...
