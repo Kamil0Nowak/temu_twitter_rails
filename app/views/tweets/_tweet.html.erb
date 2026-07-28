@@ -3,22 +3,19 @@
     <span class="text-xs text-gray-500">by <%= display_author(tweet) %></span>
     <%= link_to "𝕩", tweet_path(tweet), data: { turbo_method: :delete } if Current.user&.is_tweet_owner?(tweet) %>
   </div>
+
   <p class="text-gray-800 whitespace-pre-wrap my-2"><%= tweet.body %></p>
 
   <div class="mt-3 flex items-center justify-between text-xs text-gray-400">
     <span><%= time_ago_in_words(tweet.created_at) %> temu</span>
-    <% if (like = Current.user&.likes&.find_by(tweet_id: tweet.id)) %>
-      <%= link_to tweet_like_path(tweet, like),
-                  data: { turbo_method: :delete },
-                  class: "text-red-500 font-bold" do %>
-        ❤️ <span id="<%= dom_id(tweet, :likes_count) %>"><%= tweet.likes.count %></span>
-      <% end %>
-    <% else %>
-      <%= link_to tweet_likes_path(tweet),
-                  data: { turbo_method: :post },
-                  class: "text-gray-500 hover:text-red-500" do %>
-        🤍 <span id="<%= dom_id(tweet, :likes_count) %>"><%= tweet.likes.count %></span>
-      <% end %>
-    <% end %>
+
+    <div class="flex items-center gap-1.5">
+      <%= render "likes/button", tweet: tweet %>
+
+<!--      <span id="<%#= dom_id(tweet, :likes_count) %>" class="font-bold">-->
+        <%#= tweet.likes_count %>
+<!--      </span>-->
+      <%= render "likes/counter", tweet: tweet %>
+    </div>
   </div>
 </div>

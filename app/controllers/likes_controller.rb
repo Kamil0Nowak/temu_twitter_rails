@@ -3,22 +3,38 @@ class LikesController < ApplicationController
 
   def create
     @tweet.likes.create!(user: Current.user)
+    @tweet.reload
+
+    @tweet.broadcast_replace_to(
+      "tweets",
+      target: ActionView::RecordIdentifier.dom_id(@tweet, :likes_count),
+      partial: "likes/counter",
+      locals: { tweet: @tweet }
+    )
 
     render turbo_stream: turbo_stream.replace(
-      @tweet,
-      partial: "tweets/tweet",
-      locals: { tweet: @tweet }
+        ActionView::RecordIdentifier.dom_id(@tweet, :like_button),
+        partial: "likes/button",
+        locals: { tweet: @tweet }
     )
   end
 
   def destroy
     like = @tweet.likes.find(params[:id])
     like.destroy
+    @tweet.reload
+
+    @tweet.broadcast_replace_to(
+      "tweets",
+      target: ActionView::RecordIdentifier.dom_id(@tweet, :likes_count),
+      partial: "likes/counter",
+      locals: { tweet: @tweet }
+    )
 
     render turbo_stream: turbo_stream.replace(
-      @tweet,
-      partial: "tweets/tweet",
-      locals: { tweet: @tweet }
+        ActionView::RecordIdentifier.dom_id(@tweet, :like_button),
+        partial: "likes/button",
+        locals: { tweet: @tweet }
     )
   end
 

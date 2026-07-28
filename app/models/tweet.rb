@@ -13,4 +13,5 @@ class Tweet < ApplicationRecord
   after_destroy_commit do
     broadcast_remove_to "tweets"
   end
+
 end
