@@ -1,5 +1,8 @@
-<%= turbo_frame_tag "comments" do %>
+<%= turbo_frame_tag dom_id(@tweet, :comments) do %>
+  <%= render "comments/form",  tweet: @tweet , comment: @comment %>
+  <ul class="p-2 mt-2 space-y-2 max-h-[300px] overflow-y-auto" id="<%= dom_id(@tweet, :comments_list) %>">
   <% @comments.each do |comment| %>
-    <%= comment.content %>
+      <%= render "comments/comment", comment: comment %>
   <% end %>
+  </ul>
 <% end %>

@@ -7,13 +7,13 @@ class LikesController < ApplicationController
 
     @tweet.broadcast_replace_to(
       "tweets",
-      target: ActionView::RecordIdentifier.dom_id(@tweet, :likes_count),
+      target: helpers.dom_id(@tweet, :likes_count),
       partial: "likes/counter",
       locals: { tweet: @tweet }
     )
 
     render turbo_stream: turbo_stream.replace(
-        ActionView::RecordIdentifier.dom_id(@tweet, :like_button),
+      helpers.dom_id(@tweet, :like_button),
         partial: "likes/button",
         locals: { tweet: @tweet }
     )
@@ -26,7 +26,7 @@ class LikesController < ApplicationController
 
     @tweet.broadcast_replace_to(
       "tweets",
-      target: ActionView::RecordIdentifier.dom_id(@tweet, :likes_count),
+      target: helpers.dom_id(@tweet, :likes_count),
       partial: "likes/counter",
       locals: { tweet: @tweet }
     )

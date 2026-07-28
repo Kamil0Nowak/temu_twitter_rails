@@ -4,7 +4,7 @@
     <%= link_to "𝕩", tweet_path(tweet), data: { turbo_method: :delete } if Current.user&.is_tweet_owner?(tweet) %>
   </div>
 
-  <p class="text-gray-800 whitespace-pre-wrap my-2"><%= tweet.body %></p>
+  <p class="text-gray-800 bg-gray-100 p-2 border border-gray-200 rounded-xl my-2"><%= tweet.body %></p>
 
   <div class="mt-3 flex items-center justify-between text-xs text-gray-400">
     <span><%= time_ago_in_words(tweet.created_at) %> temu</span>
@@ -15,7 +15,7 @@
       <%= render "likes/counter", tweet: tweet %>
     </div>
   </div>
-  <%= turbo_frame_tag "comments" do %>
-  <%= link_to "💬 Show comments", tweet_comments_path(tweet), class: "text-blue-500 hover:underline" %>
+  <%= turbo_frame_tag dom_id(tweet, :comments) do %>
+    <%= link_to "💬 Show comments", tweet_comments_path(tweet), class: "text-blue-500 hover:underline" %>
   <% end %>
 </div>
