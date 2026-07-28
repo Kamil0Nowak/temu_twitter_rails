@@ -15,7 +15,10 @@
       <%= render "likes/counter", tweet: tweet %>
     </div>
   </div>
-  <%= turbo_frame_tag dom_id(tweet, :comments) do %>
+  <%= turbo_frame_tag dom_id(tweet, :comments), data: {
+    controller: "comments",
+    comments_tweet_id_value: tweet.id
+  } do %>
     <%= link_to "💬 Show comments", tweet_comments_path(tweet), class: "text-blue-500 hover:underline" %>
   <% end %>
 </div>

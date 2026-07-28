@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import CommentsController from "./comments_controller"
+application.register("comments", CommentsController)
+
 import FlashController from "./flash_controller"
 application.register("flash", FlashController)
 

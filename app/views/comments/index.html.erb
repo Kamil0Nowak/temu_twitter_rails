@@ -1,8 +1,16 @@
-<%= turbo_frame_tag dom_id(@tweet, :comments) do %>
+<%= turbo_frame_tag dom_id(@tweet, :comments), data: {
+  controller: "comments",
+  comments_tweet_id_value: @tweet.id
+} do %>
   <%= render "comments/form",  tweet: @tweet , comment: @comment %>
   <ul class="p-2 mt-2 space-y-2 max-h-[300px] overflow-y-auto" id="<%= dom_id(@tweet, :comments_list) %>">
   <% @comments.each do |comment| %>
       <%= render "comments/comment", comment: comment %>
   <% end %>
   </ul>
+  <button type="button"
+          data-action="click->comments#close"
+          class="text-xs text-gray-400 hover:text-gray-600 hover:underline cursor-pointer">
+     Hide comments
+  </button>
 <% end %>
